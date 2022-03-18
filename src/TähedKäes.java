@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class TähedKäes {
+    public static int TähtiKäes = 7;
     private int tähtedeArv;
     private ArrayList<String> tähed;
 
@@ -8,6 +9,7 @@ public class TähedKäes {
         this.tähtedeArv = tähtedeArv;
         this.tähed = tähed;
     }
+    public static int getTähtiKäes() { return TähtiKäes; }
 
     public int getTähtedeArv() {
         return tähtedeArv;

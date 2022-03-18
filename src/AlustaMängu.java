@@ -3,7 +3,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class AlustaMängu {
-    public static int TähtiKäes = 7;
 
     public static void main(String[] args) {
         /* OLULINE, NO DELETE PLS
@@ -35,8 +34,8 @@ public class AlustaMängu {
 
  */
 
-        ArrayList<String> mängija1Tähed = new ArrayList<String>(TähtiKäes);
-        ArrayList<String> mängija2Tähed = new ArrayList<String>(TähtiKäes);
+        ArrayList<String> mängija1Tähed = new ArrayList<>(TähedKäes.getTähtiKäes());
+        ArrayList<String> mängija2Tähed = new ArrayList<>(TähedKäes.getTähtiKäes());
 
         int tähestikuPikkus = tähestik.length;
         //System.out.println(tähestikuPikkus);
@@ -44,19 +43,19 @@ public class AlustaMängu {
         int indeksTähestik;
         String vastavTäht;
 
-        for (int i = 0; i < TähtiKäes; i++) {
+        for (int i = 0; i < TähedKäes.getTähtiKäes(); i++) {
             indeksTähestik = (int)(Math.random()*tähestikuPikkus);
             vastavTäht = tähestik[indeksTähestik];
             mängija1Tähed.add(vastavTäht);
         }
-        for (int i = 0; i < TähtiKäes; i++) {
+        for (int i = 0; i < TähedKäes.getTähtiKäes(); i++) {
             indeksTähestik = (int)(Math.random()*tähestikuPikkus);
             vastavTäht = tähestik[indeksTähestik];
             mängija2Tähed.add(vastavTäht);
         }
 
-        TähedKäes mängija1Käsi = new TähedKäes(TähtiKäes, mängija1Tähed);
-        TähedKäes mängija2Käsi = new TähedKäes(TähtiKäes, mängija2Tähed);
+        TähedKäes mängija1Käsi = new TähedKäes(TähedKäes.getTähtiKäes(), mängija1Tähed);
+        TähedKäes mängija2Käsi = new TähedKäes(TähedKäes.getTähtiKäes(), mängija2Tähed);
 
         System.out.println(mängija1Tähed);
         System.out.println(mängija2Tähed);
