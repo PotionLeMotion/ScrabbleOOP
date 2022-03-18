@@ -1,11 +1,17 @@
+import java.util.Arrays;
 import java.util.Hashtable;
+import java.util.List;
 
 public class Punktisumma {
     private Hashtable<String, Integer> tähtedePunktid;
     private String[] tähed;
-    public Punktisumma(Hashtable<String, Integer> tähtedePunktid, String[] tähed) {
+    private String hinnatavSõna;
+    private int hetkeSkoor;
+    public Punktisumma(Hashtable<String, Integer> tähtedePunktid, String[] tähed, String hinnatavSõna, int hetkeSkoor) {
         this.tähtedePunktid = tähtedePunktid;
         this.tähed = tähed;
+        this.hinnatavSõna = hinnatavSõna;
+        this.hetkeSkoor = hetkeSkoor;
     }
     public Hashtable<String, Integer> getTähtedePunktid() {
         return tähtedePunktid;
@@ -30,5 +36,13 @@ public class Punktisumma {
             }
         }
         return tähtedePunktid;
+    }
+    public int arvutaSkoor() {
+        int punktid = hetkeSkoor;
+        List<String> tükeldatudSõna = Arrays.asList(hinnatavSõna.split(""));
+        for (int i = 0; i < tükeldatudSõna.size(); i++) {
+            punktid += tähtedePunktid.get(tükeldatudSõna.get(i));
+        }
+        return punktid;
     }
 }

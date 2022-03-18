@@ -8,7 +8,10 @@ public class Peaklass {
                         "P", "F", "H", "V", "W",
                         "Y", "K", "J", "X", "Q", "Z"};
         Hashtable<String, Integer> tähtedePunktid = new Hashtable<>();
-        Punktisumma punktisumma = new Punktisumma(tähtedePunktid, tähed);
-        System.out.println(punktisumma.tähedPunktidKokku());
+        String hinnatavSõna = "DONE";
+        int hetkeSkoor = 0;
+        Punktisumma punktisumma = new Punktisumma(tähtedePunktid, tähed, hinnatavSõna, hetkeSkoor);
+        punktisumma.tähedPunktidKokku();
+        System.out.println(punktisumma.arvutaSkoor());
     }
 }
