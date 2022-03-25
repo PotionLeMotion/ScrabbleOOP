@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class AlustaMängu {
@@ -19,27 +18,27 @@ public class AlustaMängu {
                 "Y-4", "K-5", "J-8", "X-8", "Q-10", "Z-10"};
 
 
-        ArrayList<String> mängija1Tähed = new ArrayList<>(TähedKäes.getTähtiKäes());
-        ArrayList<String> mängija2Tähed = new ArrayList<>(TähedKäes.getTähtiKäes());
+        ArrayList<String> mängija1Tähed = new ArrayList<>(TähedKäes.getTähtedeArv());
+        ArrayList<String> mängija2Tähed = new ArrayList<>(TähedKäes.getTähtedeArv());
 
         int tähestikuPikkus = tähestik.length;
 
         int indeksTähestik;
         String vastavTäht;
 
-        for (int i = 0; i < TähedKäes.getTähtiKäes(); i++) {
+        for (int i = 0; i < TähedKäes.getTähtedeArv(); i++) {
             indeksTähestik = (int)(Math.random()*tähestikuPikkus);
             vastavTäht = tähestikVisuaalne[indeksTähestik];
             mängija1Tähed.add(vastavTäht);
         }
-        for (int i = 0; i < TähedKäes.getTähtiKäes(); i++) {
+        for (int i = 0; i < TähedKäes.getTähtedeArv(); i++) {
             indeksTähestik = (int)(Math.random()*tähestikuPikkus);
             vastavTäht = tähestikVisuaalne[indeksTähestik];
             mängija2Tähed.add(vastavTäht);
         }
 
-        TähedKäes mängija1Käsi = new TähedKäes(TähedKäes.getTähtiKäes(), mängija1Tähed);
-        TähedKäes mängija2Käsi = new TähedKäes(TähedKäes.getTähtiKäes(), mängija2Tähed);
+        TähedKäes mängija1Käsi = new TähedKäes(TähedKäes.getTähtedeArv(), mängija1Tähed);
+        TähedKäes mängija2Käsi = new TähedKäes(TähedKäes.getTähtedeArv(), mängija2Tähed);
 
         //System.out.println(mängija1Käsi);
         //System.out.println(mängija2Käsi);
