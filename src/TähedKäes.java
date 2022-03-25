@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class TähedKäes {
-    private static int tähtedeArv;
+    private static int tähtedeArv = 7;
     private ArrayList<String> tähed;
 
     public TähedKäes(int tähtedeArv, ArrayList<String> tähed) {
