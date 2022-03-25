@@ -5,12 +5,10 @@ import java.util.List;
 public class Punktisumma {
     private Hashtable<String, Integer> tähtedePunktid;
     private String[] tähed;
-    private String hinnatavSõna;
     private int hetkeSkoor;
-    public Punktisumma(Hashtable<String, Integer> tähtedePunktid, String[] tähed, String hinnatavSõna, int hetkeSkoor) {
+    public Punktisumma(Hashtable<String, Integer> tähtedePunktid, String[] tähed, int hetkeSkoor) {
         this.tähtedePunktid = tähtedePunktid;
         this.tähed = tähed;
-        this.hinnatavSõna = hinnatavSõna;
         this.hetkeSkoor = hetkeSkoor;
     }
     public Hashtable<String, Integer> getTähtedePunktid() {
@@ -21,6 +19,12 @@ public class Punktisumma {
     }
     public void setTähed(String[] tähed) {
         this.tähed = tähed;
+    }
+    public int getHetkeSkoor() {
+        return hetkeSkoor;
+    }
+    public void setHetkeSkoor(int hetkeSkoor) {
+        this.hetkeSkoor = hetkeSkoor;
     }
     public Hashtable<String, Integer> tähedPunktidKokku() {
         for (String s : tähed) {
@@ -37,12 +41,9 @@ public class Punktisumma {
         }
         return tähtedePunktid;
     }
-    public int arvutaSkoor() {
-        int punktid = hetkeSkoor;
+    public int arvutaSkoor(String hinnatavSõna) {
         List<String> tükeldatudSõna = Arrays.asList(hinnatavSõna.split(""));
-        for (int i = 0; i < tükeldatudSõna.size(); i++) {
-            punktid += tähtedePunktid.get(tükeldatudSõna.get(i));
-        }
-        return punktid;
+        for (String s : tükeldatudSõna) hetkeSkoor += tähtedePunktid.get(s);
+        return hetkeSkoor;
     }
 }
