@@ -5,7 +5,50 @@ import java.util.Scanner;
 public class AlustaMängu {
 
     public static void main(String[] args) {
-        /* OLULINE, NO DELETE PLS
+
+        String[] tähestik = {"A", "E", "I", "O", "U",
+                "L", "N", "S", "T", "R",
+                "D", "G", "B", "C", "M",
+                "P", "F", "H", "V", "W",
+                "Y", "K", "J", "X", "Q", "Z"};
+
+        String[] tähestikVisuaalne = {"A-1", "E-1", "I-1", "O-1", "U-1",
+                "L-1", "N-1", "S-1", "T-1", "R-1",
+                "D-2", "G-2", "B-3", "C-3", "M-3",
+                "P-3", "F-4", "H-4", "V-4", "W-4",
+                "Y-4", "K-5", "J-8", "X-8", "Q-10", "Z-10"};
+
+
+        ArrayList<String> mängija1Tähed = new ArrayList<>(TähedKäes.getTähtiKäes());
+        ArrayList<String> mängija2Tähed = new ArrayList<>(TähedKäes.getTähtiKäes());
+
+        int tähestikuPikkus = tähestik.length;
+
+        int indeksTähestik;
+        String vastavTäht;
+
+        for (int i = 0; i < TähedKäes.getTähtiKäes(); i++) {
+            indeksTähestik = (int)(Math.random()*tähestikuPikkus);
+            vastavTäht = tähestikVisuaalne[indeksTähestik];
+            mängija1Tähed.add(vastavTäht);
+        }
+        for (int i = 0; i < TähedKäes.getTähtiKäes(); i++) {
+            indeksTähestik = (int)(Math.random()*tähestikuPikkus);
+            vastavTäht = tähestikVisuaalne[indeksTähestik];
+            mängija2Tähed.add(vastavTäht);
+        }
+
+        TähedKäes mängija1Käsi = new TähedKäes(TähedKäes.getTähtiKäes(), mängija1Tähed);
+        TähedKäes mängija2Käsi = new TähedKäes(TähedKäes.getTähtiKäes(), mängija2Tähed);
+
+        //System.out.println(mängija1Käsi);
+        //System.out.println(mängija2Käsi);
+
+        // OLULINE, NO DELETE PLS
+        System.out.println();
+        System.out.println("Scrabble (meie moodi)");
+        System.out.println();
+
         Scanner sisestusMängija1 = new Scanner(System.in);
         System.out.print("Mängija 1, sisesta oma nimi: ");
         String Mängija1 = sisestusMängija1.nextLine();
@@ -16,48 +59,12 @@ public class AlustaMängu {
         String Mängija2 = sisestusMängija2.nextLine();
         System.out.println("Sinu nimi on: " + Mängija2);
 
-         */
+        System.out.println("Mängija " + Mängija1 + " käik.");
+        System.out.println("Sinu tähed: " + mängija1Käsi);
 
-        String[] tähestik = {"A", "E", "I", "O", "U",
-                "L", "N", "S", "T", "R",
-                "D", "G", "B", "C", "M",
-                "P", "F", "H", "V", "W",
-                "Y", "K", "J", "X", "Q", "Z"};
+        System.out.println("Mängija " + Mängija2 + " käik.");
+        System.out.println("Sinu tähed: " + mängija2Käsi);
 
-/*  TEGELT MEELDIKS MULLE SEE ROHKEM
-
-        String[] tähestik = {"A-1", "E-1", "I-1", "O-1", "U-1",
-                "L-1", "N-1", "S-1", "T-1", "R-1",
-                "D-1", "G-1", "B-1", "C-1", "M-1",
-                "P-1", "F-1", "H-1", "V-1", "W-1",
-                "Y-1", "K-1", "J-1", "X-1", "Q-1", "Z-1"};
-
- */
-
-        ArrayList<String> mängija1Tähed = new ArrayList<>(TähedKäes.getTähtiKäes());
-        ArrayList<String> mängija2Tähed = new ArrayList<>(TähedKäes.getTähtiKäes());
-
-        int tähestikuPikkus = tähestik.length;
-        //System.out.println(tähestikuPikkus);
-
-        int indeksTähestik;
-        String vastavTäht;
-
-        for (int i = 0; i < TähedKäes.getTähtiKäes(); i++) {
-            indeksTähestik = (int)(Math.random()*tähestikuPikkus);
-            vastavTäht = tähestik[indeksTähestik];
-            mängija1Tähed.add(vastavTäht);
-        }
-        for (int i = 0; i < TähedKäes.getTähtiKäes(); i++) {
-            indeksTähestik = (int)(Math.random()*tähestikuPikkus);
-            vastavTäht = tähestik[indeksTähestik];
-            mängija2Tähed.add(vastavTäht);
-        }
-
-        TähedKäes mängija1Käsi = new TähedKäes(TähedKäes.getTähtiKäes(), mängija1Tähed);
-        TähedKäes mängija2Käsi = new TähedKäes(TähedKäes.getTähtiKäes(), mängija2Tähed);
-
-        System.out.println(mängija1Tähed);
-        System.out.println(mängija2Tähed);
     }
+
 }

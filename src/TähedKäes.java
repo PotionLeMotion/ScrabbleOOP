@@ -27,4 +27,8 @@ public class TähedKäes {
         this.tähed = tähed;
     }
 
+    @Override
+    public String toString() {
+        return "Tähed: " + tähed;
+    }
 }
