@@ -1,15 +1,19 @@
 import java.util.*;
 
 public class MoodustaSõna {
-
-
+    private String hinnatavSõna;
     private ArrayList<String> tähedKäes;
     private String sisestatudSõna;
     Tähestik tähestik = new Tähestik(new String[]{"a"});
 
-    public MoodustaSõna(ArrayList<String> tähedKäes, String sisestatudSõna) {
+    public MoodustaSõna(ArrayList<String> tähedKäes, String sisestatudSõna, String hinnatavSõna) {
+        this.hinnatavSõna = hinnatavSõna;
         this.tähedKäes = tähedKäes;
         this.sisestatudSõna = sisestatudSõna;
+    }
+
+    public String getHinnatavSõna() {
+        return hinnatavSõna;
     }
 
     public boolean MoodustaTähtedestSõna(ArrayList<String> tähedKäes, String sisestatudSõna, int mängija, Punktisumma punktisumma1, Punktisumma punktisumma2) {
@@ -18,38 +22,37 @@ public class MoodustaSõna {
         int kasTehaUuestiRing = 0;
         String sisestusUuesti = "";
         String salvestatudTähed2 = "";
-        String hinnatavSõna = "";
-
 
         for (String täht : tähedKäes) {
             tähedKäesIlmaNumbriteta.add(täht.substring(0,1));
         }
 
         for (int i = 0; ; i++) {
-            if (kasTehaUuestiRing >= 1) {
-                if (kasTehaUuestiRing == 1) {
-                    i = 0;
-                    kasTehaUuestiRing++;
-                }
-                if (tähedKäesIlmaNumbriteta.contains(sisestusUuesti.substring(i, i + 1))) {
-                    String vastavTäht = sisestusUuesti.substring(i, i + 1);
-                    salvestatudTähed2 += vastavTäht;
-                    int täheleVastavIndeks = tähedKäesIlmaNumbriteta.indexOf(vastavTäht);
-                    tähedKäesIlmaNumbriteta.set(täheleVastavIndeks, "-");
-                    System.out.println(tähedKäesIlmaNumbriteta);
-                    if (i == sisestusUuesti.length() - 1) {
-                        System.out.println("Sõna on võimalik moodustada!");
-                        väljumineMeetodist = true;
-                        hinnatavSõna = sisestusUuesti;
-                        break;
+            if (i < sisestusUuesti.length()) {
+                if (kasTehaUuestiRing >= 1) {
+                    if (kasTehaUuestiRing == 1) {
+                        i = 0;
+                        kasTehaUuestiRing++;
+                    }
+                    if (tähedKäesIlmaNumbriteta.contains(sisestusUuesti.substring(i, i + 1))) {
+                        String vastavTäht = sisestusUuesti.substring(i, i + 1);
+                        salvestatudTähed2 += vastavTäht;
+                        int täheleVastavIndeks = tähedKäesIlmaNumbriteta.indexOf(vastavTäht);
+                        tähedKäesIlmaNumbriteta.set(täheleVastavIndeks, "-");
+                        System.out.println(tähedKäesIlmaNumbriteta);
+                        if (i == sisestusUuesti.length() - 1) {
+                            System.out.println("Sõna on võimalik moodustada!");
+                            väljumineMeetodist = true;
+                            hinnatavSõna = sisestusUuesti;
+                            break;
+                        }
+                    } else {
+                        i = -1;
+                        kasTehaUuestiRing = -1;
                     }
                 }
-                else {
-                    i = -1;
-                    kasTehaUuestiRing = -1;
-                }
             }
-            if (i < sisestatudSõna.length()) {
+            if (i < sisestatudSõna.length()-1) {
                 if (kasTehaUuestiRing == 0) {
                     if (tähedKäesIlmaNumbriteta.contains(sisestatudSõna.substring(i, i + 1))) {
                         String vastavTäht = sisestatudSõna.substring(i, i + 1);
@@ -67,6 +70,7 @@ public class MoodustaSõna {
                 }
             }
             else {
+                i = 0;
                 System.out.println("Sinu käesolevatest tähtedest pole võimalik antud sõna moodustada.");
                 System.out.println();
                 System.out.println("Sinu tähed on: " + tähedKäes);

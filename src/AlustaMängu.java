@@ -21,8 +21,8 @@ public class AlustaMängu {
         punktisumma2.tähedPunktidKokku();
 
         List<String> käsi = Arrays.asList("A", "", "E", "I", "", "", "");
-        Shuffle shuffle = new Shuffle(käsi, tähestik.getTähestik());
-        System.out.println(shuffle.lisaSuvalisedTähed());
+        //Shuffle shuffle = new Shuffle(käsi, tähestik.getTähestik(), );
+        //System.out.println(shuffle.lisaSuvalisedTähed());
         System.out.println();
 /*
         punktisumma1.tähedPunktidKokku();
@@ -61,8 +61,8 @@ public class AlustaMängu {
         System.out.println("Sinu nimi on: " + Mängija2);
 
         //moodustame esimesed tähed, mis on käes
-        ArrayList<String> tähed1 = mängija1Käsi.getTähedMängijale1();
-        ArrayList<String> tähed2 = mängija2Käsi.getTähedMängijale2();
+        List<String> tähed1 = mängija1Käsi.getTähedMängijale1();
+        List<String> tähed2 = mängija2Käsi.getTähedMängijale2();
 
         while (punktisumma1.getHetkeSkoor() < 20 || punktisumma2.getHetkeSkoor() < 20) {
 
@@ -76,15 +76,17 @@ public class AlustaMängu {
             String mängija1Sõna = mängija1SõnaSisestus.nextLine();
             mängija1Sõna = mängija1Sõna.toUpperCase();
 
-            MoodustaSõna moodustaSõna1 = new MoodustaSõna(mängija1Käsi.getMängija1Tähed(), mängija1Sõna);
+            MoodustaSõna moodustaSõna1 = new MoodustaSõna(mängija1Käsi.getMängija1Tähed(), mängija1Sõna, "");
             System.out.println();
 
             if (moodustaSõna1.MoodustaTähtedestSõna(mängija1Käsi.getMängija1Tähed(), mängija1Sõna, 1, punktisumma1, punktisumma2) == true) {
-                System.out.println("Kas " + Mängija2 + " on antud sõnaga nõus? (y/n)");
+                System.out.print("Kas " + Mängija2 + " on antud sõnaga nõus? (Y/N): ");
                 Scanner jahVõiEi1 = new Scanner(System.in);
                 String vastus1 = jahVõiEi1.nextLine();
                 vastus1 = vastus1.toUpperCase();
                 moodustaSõna1.kasOnNõus(vastus1); // selle true või false return põhjal peaks vaatama, kas lisada punkte ja eemaldada kasutatud tähed käest.
+                Shuffle shuffle1 = new Shuffle(tähed1, tähestik.getTähestik(), moodustaSõna1.getHinnatavSõna());
+                tähed1 = shuffle1.getKäsi();
             }
 
             System.out.println();
@@ -96,15 +98,17 @@ public class AlustaMängu {
             String mängija2Sõna = mängija2SõnaSisestus.nextLine();
             mängija2Sõna = mängija2Sõna.toUpperCase();
 
-            MoodustaSõna moodustaSõna2 = new MoodustaSõna(mängija2Käsi.getMängija2Tähed(), mängija2Sõna);
+            MoodustaSõna moodustaSõna2 = new MoodustaSõna(mängija2Käsi.getMängija2Tähed(), mängija2Sõna, "");
             System.out.println();
 
             if (moodustaSõna2.MoodustaTähtedestSõna(mängija2Käsi.getMängija2Tähed(), mängija2Sõna, 2, punktisumma1, punktisumma2) == true) {
-                System.out.println("Kas " + Mängija1 + " on antud sõnaga nõus? (y/n)");
+                System.out.print("Kas " + Mängija1 + " on antud sõnaga nõus? (Y/N): ");
                 Scanner jahVõiEi2 = new Scanner(System.in);
                 String vastus2 = jahVõiEi2.nextLine();
                 vastus2 = vastus2.toUpperCase();
                 moodustaSõna1.kasOnNõus(vastus2); // selle true või false return põhjal peaks vaatama, kas lisada punkte ja eemaldada kasutatud tähed käest.
+                Shuffle shuffle2 = new Shuffle(tähed2, tähestik.getTähestik(), moodustaSõna2.getHinnatavSõna());
+                tähed2 = shuffle2.getKäsi();
             }
 
         }
