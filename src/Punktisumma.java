@@ -26,14 +26,15 @@ public class Punktisumma {
     }
     public Hashtable<String, Integer> tähedPunktidKokku() {
         for (String s : tähed) {
-            switch (s) {
-                case "A", "E", "I", "O", "U", "L", "N", "S", "T", "R" -> tähtedePunktid.put(s, 1);
-                case "D", "G" -> tähtedePunktid.put(s, 2);
-                case "B", "C", "M", "P" -> tähtedePunktid.put(s, 3);
-                case "F", "H", "V", "W", "Y" -> tähtedePunktid.put(s, 4);
-                case "K" -> tähtedePunktid.put(s, 5);
-                case "J", "X" -> tähtedePunktid.put(s, 8);
-                case "Q", "Z" -> tähtedePunktid.put(s, 10);
+            String täht = s.substring(0,1);
+            switch (täht) {
+                case "A", "E", "I", "O", "U", "L", "N", "S", "T", "R" -> tähtedePunktid.put(täht, 1);
+                case "D", "G" -> tähtedePunktid.put(täht, 2);
+                case "B", "C", "M", "P" -> tähtedePunktid.put(täht, 3);
+                case "F", "H", "V", "W", "Y" -> tähtedePunktid.put(täht, 4);
+                case "K" -> tähtedePunktid.put(täht, 5);
+                case "J", "X" -> tähtedePunktid.put(täht, 8);
+                case "Q", "Z" -> tähtedePunktid.put(täht, 10);
                 default -> System.out.println("Tundmatu täht!");
             }
         }

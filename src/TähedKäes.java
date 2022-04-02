@@ -1,23 +1,51 @@
 import java.util.ArrayList;
+
 public class TähedKäes {
-    public static int TähtiKäes = 7;
-    private int tähtedeArv;
-    private ArrayList<String> tähed;
-    public TähedKäes(int tähtedeArv, ArrayList<String> tähed) {
-        this.tähtedeArv = tähtedeArv;
-        this.tähed = tähed;
+    private static int tähtedeArv = 7;
+    private String[] tähedMängijale1;
+    private String[] tähedMängijale2;
+    private ArrayList<String> mängija1Tähed = new ArrayList<>(TähedKäes.getTähtedeArv());
+    private ArrayList<String> mängija2Tähed = new ArrayList<>(TähedKäes.getTähtedeArv());
+
+    public TähedKäes(String[] tähedMängijale1, String[] tähedMängijale2) {
+        this.tähedMängijale1 = tähedMängijale1;
+        this.tähedMängijale2 = tähedMängijale2;
     }
-    public static int getTähtiKäes() { return TähtiKäes; }
-    public int getTähtedeArv() {
+
+    public static int getTähtedeArv() {
         return tähtedeArv;
     }
-    public void setTähtedeArv(int tähtedeArv) {
-        this.tähtedeArv = tähtedeArv;
+
+    public void suvalisedTähedMängija1() {
+        for (int i = 0; i < TähedKäes.getTähtedeArv(); i++) {
+            int indeksTähestik = (int) (Math.random() * Tähestik.getTähestik().length);
+            String vastavTäht = Tähestik.getTähestik()[indeksTähestik];
+            mängija1Tähed.add(vastavTäht);
+        }
     }
-    public ArrayList<String> getTähed() {
-        return tähed;
+    public void suvalisedTähedMängija2() {
+        for (int i = 0; i < TähedKäes.getTähtedeArv(); i++) {
+            int indeksTähestik = (int) (Math.random() * Tähestik.getTähestik().length);
+            String vastavTäht = Tähestik.getTähestik()[indeksTähestik];
+            mängija2Tähed.add(vastavTäht);
+        }
     }
-    public void setTähed(ArrayList<String> tähed) {
-        this.tähed = tähed;
+
+    public ArrayList<String> getMängija1Tähed() {
+        return mängija1Tähed;
+    }
+
+    public ArrayList<String> getMängija2Tähed() {
+        return mängija2Tähed;
+    }
+
+    public ArrayList<String> getTähedMängijale1() {
+        suvalisedTähedMängija1();
+        return mängija1Tähed;
+    }
+
+    public ArrayList<String> getTähedMängijale2() {
+        suvalisedTähedMängija2();
+        return mängija2Tähed;
     }
 }
