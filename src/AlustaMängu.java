@@ -10,37 +10,13 @@ public class AlustaMängu {
 
     public static void main(String[] args) {
 
-        Tähestik tähestik = new Tähestik(new String[]{"a"});
-
         TähedKäes mängija1Käsi = new TähedKäes(new String[]{"a"}, new String[]{"b"});
         TähedKäes mängija2Käsi = new TähedKäes(new String[]{"a"}, new String[]{"b"});
 
-        Punktisumma punktisumma1 = new Punktisumma(new Hashtable<>(), tähestik.getTähestik(), 0);
-        Punktisumma punktisumma2 = new Punktisumma(new Hashtable<>(), tähestik.getTähestik(), 0);
+        Punktisumma punktisumma1 = new Punktisumma(new Hashtable<>(), Tähestik.getTähestik(), 0);
+        Punktisumma punktisumma2 = new Punktisumma(new Hashtable<>(), Tähestik.getTähestik(), 0);
         punktisumma1.tähedPunktidKokku();
         punktisumma2.tähedPunktidKokku();
-
-        List<String> käsi = Arrays.asList("A", "", "E", "I", "", "", "");
-        Shuffle shuffle = new Shuffle(käsi, tähestik.getTähestik());
-/*
-        punktisumma1.tähedPunktidKokku();
-        punktisumma2.tähedPunktidKokku();
-        System.out.println(punktisumma1.arvutaSkoor("WOW"));
-        System.out.println(punktisumma1.getHetkeSkoor());
-        System.out.println();
-        System.out.println(punktisumma2.arvutaSkoor("NORMAL"));
-        System.out.println(punktisumma2.getHetkeSkoor());
-        System.out.println();
-        System.out.println(punktisumma1.getHetkeSkoor());
-        System.out.println(punktisumma2.getHetkeSkoor());
-        System.out.println();
-        System.out.println(punktisumma1.arvutaSkoor("HERO"));
-        System.out.println(punktisumma1.getHetkeSkoor());
-
-
- */
-        //String salvestaMängija1Nimi = "";
-        //String salvestaMängija2Nimi = "";
 
         System.out.println("Scrabble (meie moodi)");
         System.out.println();
@@ -76,7 +52,7 @@ public class AlustaMängu {
             MoodustaSõna moodustaSõna1 = new MoodustaSõna(mängija1Käsi.getMängija1Tähed(), mängija1Sõna);
             System.out.println();
 
-            if (moodustaSõna1.MoodustaTähtedestSõna(mängija1Käsi.getMängija1Tähed(), mängija1Sõna, 1, punktisumma1, punktisumma2) == true) {
+            if (moodustaSõna1.MoodustaTähtedestSõna(mängija1Käsi.getMängija1Tähed(), mängija1Sõna, 1, punktisumma1, punktisumma2)) {
                 System.out.println("Kas " + Mängija2 + " on antud sõnaga nõus? (y/n)");
                 Scanner jahVõiEi1 = new Scanner(System.in);
                 String vastus1 = jahVõiEi1.nextLine();
@@ -99,7 +75,7 @@ public class AlustaMängu {
             MoodustaSõna moodustaSõna2 = new MoodustaSõna(mängija2Käsi.getMängija2Tähed(), mängija2Sõna);
             System.out.println();
 
-            if (moodustaSõna2.MoodustaTähtedestSõna(mängija2Käsi.getMängija2Tähed(), mängija2Sõna, 2, punktisumma1, punktisumma2) == true) {
+            if (moodustaSõna2.MoodustaTähtedestSõna(mängija2Käsi.getMängija2Tähed(), mängija2Sõna, 2, punktisumma1, punktisumma2)) {
                 System.out.println("Kas " + Mängija1 + " on antud sõnaga nõus? (y/n)");
                 Scanner jahVõiEi2 = new Scanner(System.in);
                 String vastus2 = jahVõiEi2.nextLine();

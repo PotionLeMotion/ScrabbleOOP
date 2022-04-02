@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Shuffle {
     private List<String> käsi;
-    private String[] tähed;
+    private final String[] tähed;
     public Shuffle(List<String> käsi, String[] tähed) {
         this.käsi = käsi;
         this.tähed = tähed;

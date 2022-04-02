@@ -2,7 +2,6 @@ import java.util.*;
 
 public class MoodustaSõna {
 
-
     private ArrayList<String> tähedKäes;
     private String sisestatudSõna;
     Tähestik tähestik = new Tähestik(new String[]{"a"});
