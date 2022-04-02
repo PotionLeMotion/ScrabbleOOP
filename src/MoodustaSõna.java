@@ -1,18 +1,11 @@
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class MoodustaSõna {
 
-    String[] tähestik = {"A-1", "E-1", "I-1", "O-1", "U-1",
-            "L-1", "N-1", "S-1", "T-1", "R-1",
-            "D-2", "G-2", "B-3", "C-3", "M-3",
-            "P-3", "F-4", "H-4", "V-4", "W-4",
-            "Y-4", "K-5", "J-8", "X-8", "Q-9", "Z-9"};
 
     private ArrayList<String> tähedKäes;
     private String sisestatudSõna;
+    Tähestik tähestik = new Tähestik(new String[]{"a"});
 
     public MoodustaSõna(ArrayList<String> tähedKäes, String sisestatudSõna) {
         this.tähedKäes = tähedKäes;
@@ -20,7 +13,7 @@ public class MoodustaSõna {
     }
 
     public boolean MoodustaTähtedestSõna(ArrayList<String> tähedKäes, String sisestatudSõna, int mängija) {
-        boolean väljumineMeetodist = false;
+        boolean väljumineMeetodist;
         ArrayList<String> tähedKäesIlmaNumbriteta = new ArrayList<>();
         int kasTehaUuestiRing = 0;
         String sisestusUuesti = "";
@@ -31,12 +24,15 @@ public class MoodustaSõna {
         for (String täht : tähedKäes) {
             tähedKäesIlmaNumbriteta.add(täht.substring(0,1));
         }
+
         for (int i = 0; ; i++) {
             if (kasTehaUuestiRing >= 1) {
-                if (kasTehaUuestiRing == 1)
-                i = 0;
-                String vastavTäht = sisestusUuesti.substring(i, i + 1);
-                if (tähedKäesIlmaNumbriteta.contains(vastavTäht)) {
+                if (kasTehaUuestiRing == 1) {
+                    i = 0;
+                    kasTehaUuestiRing++;
+                }
+                if (tähedKäesIlmaNumbriteta.contains(sisestusUuesti.substring(i, i + 1))) {
+                    String vastavTäht = sisestusUuesti.substring(i, i + 1);
                     salvestatudTähed2 += vastavTäht;
                     int täheleVastavIndeks = tähedKäesIlmaNumbriteta.indexOf(vastavTäht);
                     tähedKäesIlmaNumbriteta.set(täheleVastavIndeks, "-");
@@ -47,6 +43,10 @@ public class MoodustaSõna {
                         hinnatavSõna = sisestusUuesti;
                         break;
                     }
+                }
+                else {
+                    i = -1;
+                    kasTehaUuestiRing = -1;
                 }
             }
             if (i < sisestatudSõna.length()) {
@@ -74,7 +74,7 @@ public class MoodustaSõna {
                 Scanner uusSisestus = new Scanner(System.in);
                 String Sisestus = uusSisestus.nextLine();
                 Sisestus = Sisestus.toUpperCase();
-                if (kasOnNõus(Sisestus) == false) {
+                if (!kasOnNõus(Sisestus)) {
                     väljumineMeetodist = false;
                     break;
                 }
@@ -94,14 +94,14 @@ public class MoodustaSõna {
                 }
             }
         }
-        if (väljumineMeetodist == true) {
+        if (väljumineMeetodist) {
             if (mängija == 1) {
-                Punktisumma punktisumma1 = new Punktisumma(new Hashtable<>(), tähestik, 0);
+                Punktisumma punktisumma1 = new Punktisumma(new Hashtable<>(), tähestik.getTähestik(), 0);
                 System.out.println(punktisumma1.arvutaSkoor(hinnatavSõna));
                 System.out.println(punktisumma1.getHetkeSkoor());
             }
             if (mängija == 2) {
-                Punktisumma punktisumma2 = new Punktisumma(new Hashtable<>(), tähestik, 0);
+                Punktisumma punktisumma2 = new Punktisumma(new Hashtable<>(), tähestik.getTähestik(), 0);
                 System.out.println(punktisumma2.arvutaSkoor(hinnatavSõna));
                 System.out.println(punktisumma2.getHetkeSkoor());
             }
