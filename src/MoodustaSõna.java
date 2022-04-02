@@ -52,7 +52,7 @@ public class MoodustaSõna {
                     }
                 }
             }
-            if (i < sisestatudSõna.length()-1) {
+            if (i < sisestatudSõna.length()) {
                 if (kasTehaUuestiRing == 0) {
                     if (tähedKäesIlmaNumbriteta.contains(sisestatudSõna.substring(i, i + 1))) {
                         String vastavTäht = sisestatudSõna.substring(i, i + 1);
