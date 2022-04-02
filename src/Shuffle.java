@@ -14,12 +14,11 @@ public class Shuffle {
         this.tähed = tähed;
     }
     public List<String> lisaSuvalisedTähed() {
-        sõna.split("");
-        for (int i = 0; i < käsi.size(); i++) {
-            int täheleVastavIndeks = käsi.indexOf(sõna.substring(i, i+1));
-            käsi.set(täheleVastavIndeks, "-");
+        String[] indeksid = sõna.split("");
+        for (int i = 0; i < indeksid.length; i++) {
+
+            käsi.set(Integer.parseInt(String.valueOf(indeksid[i])), "-");
         }
-        System.out.println(käsi);
         for (int i = 0; i < käsi.size(); i++) {
             Random suvaline = new Random();
             int suvalineNumber = suvaline.nextInt(tähed.length);

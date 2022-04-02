@@ -3,9 +3,7 @@ import java.util.*;
 public class AlustaMängu {
 
     /**
-     * shuffle kasutusele panna
-     * arvutused MoodustaSõnas korda teha
-     * osa koodist mainist viia TähedKäes
+     * Moodustasõna, kui mittesobiv täht on eelviimane, siis läheb sõna ikka läbi
      */
 
     public static void main(String[] args) {
@@ -66,6 +64,7 @@ public class AlustaMängu {
             //while loop, punktid 30
             System.out.println();
             System.out.println("Mängija " + Mängija1 + " käik.");
+            System.out.println("Hetkeskoor on: " + punktisumma1.getHetkeSkoor());
             System.out.println(Arrays.toString(tähed1.toArray()));
             System.out.print("Sisesta käesolevatest tähtedest sõna: ");
 
@@ -77,7 +76,7 @@ public class AlustaMängu {
             System.out.println();
 
             if (moodustaSõna1.MoodustaTähtedestSõna(mängija1Käsi.getMängija1Tähed(), mängija1Sõna, 1, punktisumma1, punktisumma2) == true) {
-                System.out.println("Kas " + Mängija2 + " on antud sõnaga nõus? (y/n)");
+                System.out.println("Kas " + Mängija2 + " on antud sõnaga nõus? (Y/N): ");
                 Scanner jahVõiEi1 = new Scanner(System.in);
                 String vastus1 = jahVõiEi1.nextLine();
                 vastus1 = vastus1.toUpperCase();
@@ -85,12 +84,13 @@ public class AlustaMängu {
                 int saadudSkoor = punktisumma1.antudSõnaPunktid(mängija1Sõna.toUpperCase());
                 if (!moodustaSõna1.kasOnNõus(vastus1)) punktisumma1.setHetkeSkoor(punktisumma1.getHetkeSkoor() - saadudSkoor);
                 System.out.println("Hetkeskoor on: " + punktisumma1.getHetkeSkoor());
-                Shuffle shuffle1 = new Shuffle(tähed1, tähestik.getTähestik(), moodustaSõna1.getHinnatavSõna());
+                Shuffle shuffle1 = new Shuffle(tähed1, tähestik.getTähestik(), moodustaSõna1.getSalvestatudTähtedeIndeksid());
                 tähed1 = shuffle1.getKäsi();
             }
 
             System.out.println();
             System.out.println("Mängija " + Mängija2 + " käik.");
+            System.out.println("Hetkeskoor on: " + punktisumma2.getHetkeSkoor());
             System.out.println(Arrays.toString(tähed2.toArray()));
             System.out.print("Sisesta käesolevatest tähtedest sõna: ");
 
@@ -102,7 +102,7 @@ public class AlustaMängu {
             System.out.println();
 
             if (moodustaSõna2.MoodustaTähtedestSõna(mängija2Käsi.getMängija2Tähed(), mängija2Sõna, 2, punktisumma1, punktisumma2) == true) {
-                System.out.println("Kas " + Mängija1 + " on antud sõnaga nõus? (y/n)");
+                System.out.println("Kas " + Mängija1 + " on antud sõnaga nõus? (Y/N): ");
                 Scanner jahVõiEi2 = new Scanner(System.in);
                 String vastus2 = jahVõiEi2.nextLine();
                 vastus2 = vastus2.toUpperCase();
@@ -110,7 +110,7 @@ public class AlustaMängu {
                 int saadudSkoor = punktisumma2.antudSõnaPunktid(mängija2Sõna.toUpperCase());
                 if (!moodustaSõna2.kasOnNõus(vastus2)) punktisumma2.setHetkeSkoor(punktisumma2.getHetkeSkoor() - saadudSkoor);
                 System.out.println("Hetkeskoor on: " + punktisumma2.getHetkeSkoor());
-                Shuffle shuffle2 = new Shuffle(tähed2, tähestik.getTähestik(), moodustaSõna2.getHinnatavSõna());
+                Shuffle shuffle2 = new Shuffle(tähed2, tähestik.getTähestik(), moodustaSõna2.getSalvestatudTähtedeIndeksid());
                 tähed2 = shuffle2.getKäsi();
             }
 
@@ -119,7 +119,13 @@ public class AlustaMängu {
             System.out.println("Võitis " + Mängija1 + "!");
             System.out.println("Punktisummaks jäi " + punktisumma1.getHetkeSkoor());
         }
-        System.out.println("Võitis " + Mängija2 + "!");
-        System.out.println("Punktisummaks jäi " + punktisumma2.getHetkeSkoor());
+        if (punktisumma1.getHetkeSkoor() < punktisumma2.getHetkeSkoor()) {
+            System.out.println("Võitis " + Mängija2 + "!");
+            System.out.println("Punktisummaks jäi " + punktisumma2.getHetkeSkoor());
+        }
+        else {
+            System.out.println("Viik!");
+            System.out.println("Mõlema punktisummaks jäi " + punktisumma1.getHetkeSkoor() + "!");
+        }
     }
 }
