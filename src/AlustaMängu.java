@@ -22,8 +22,6 @@ public class AlustaMängu {
 
         List<String> käsi = Arrays.asList("A", "", "E", "I", "", "", "");
         Shuffle shuffle = new Shuffle(käsi, tähestik.getTähestik());
-        System.out.println(shuffle.lisaSuvalisedTähed());
-        System.out.println();
 /*
         punktisumma1.tähedPunktidKokku();
         punktisumma2.tähedPunktidKokku();
@@ -44,7 +42,6 @@ public class AlustaMängu {
         //String salvestaMängija1Nimi = "";
         //String salvestaMängija2Nimi = "";
 
-        System.out.println();
         System.out.println("Scrabble (meie moodi)");
         System.out.println();
 
@@ -64,7 +61,7 @@ public class AlustaMängu {
         ArrayList<String> tähed1 = mängija1Käsi.getTähedMängijale1();
         ArrayList<String> tähed2 = mängija2Käsi.getTähedMängijale2();
 
-        while (punktisumma1.getHetkeSkoor() < 20 || punktisumma2.getHetkeSkoor() < 20) {
+        while (punktisumma1.getHetkeSkoor() < 30 && punktisumma2.getHetkeSkoor() < 30) {
 
             //while loop, punktid 30
             System.out.println();
@@ -84,7 +81,10 @@ public class AlustaMängu {
                 Scanner jahVõiEi1 = new Scanner(System.in);
                 String vastus1 = jahVõiEi1.nextLine();
                 vastus1 = vastus1.toUpperCase();
-                moodustaSõna1.kasOnNõus(vastus1); // selle true või false return põhjal peaks vaatama, kas lisada punkte ja eemaldada kasutatud tähed käest.
+                // selle true või false return põhjal peaks vaatama, kas lisada punkte ja eemaldada kasutatud tähed käest.
+                int saadudSkoor = punktisumma1.antudSõnaPunktid(mängija1Sõna.toUpperCase());
+                if (!moodustaSõna1.kasOnNõus(vastus1)) punktisumma1.setHetkeSkoor(punktisumma1.getHetkeSkoor() - saadudSkoor);
+                System.out.println("Hetkeskoor on: " + punktisumma1.getHetkeSkoor());
             }
 
             System.out.println();
@@ -104,7 +104,10 @@ public class AlustaMängu {
                 Scanner jahVõiEi2 = new Scanner(System.in);
                 String vastus2 = jahVõiEi2.nextLine();
                 vastus2 = vastus2.toUpperCase();
-                moodustaSõna1.kasOnNõus(vastus2); // selle true või false return põhjal peaks vaatama, kas lisada punkte ja eemaldada kasutatud tähed käest.
+                // selle true või false return põhjal peaks vaatama, kas lisada punkte ja eemaldada kasutatud tähed käest.
+                int saadudSkoor = punktisumma2.antudSõnaPunktid(mängija2Sõna.toUpperCase());
+                if (!moodustaSõna2.kasOnNõus(vastus2)) punktisumma2.setHetkeSkoor(punktisumma2.getHetkeSkoor() - saadudSkoor);
+                System.out.println("Hetkeskoor on: " + punktisumma2.getHetkeSkoor());
             }
 
         }
@@ -115,5 +118,4 @@ public class AlustaMängu {
         System.out.println("Võitis " + Mängija2 + "!");
         System.out.println("Punktisummaks jäi " + punktisumma2.getHetkeSkoor());
     }
-
 }
