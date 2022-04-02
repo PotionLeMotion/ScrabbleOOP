@@ -3,7 +3,7 @@ import java.util.Hashtable;
 import java.util.List;
 
 public class Punktisumma {
-    private Hashtable<String, Integer> tähtedePunktid;
+    private final Hashtable<String, Integer> tähtedePunktid;
     private String[] tähed;
     private int hetkeSkoor;
     public Punktisumma(Hashtable<String, Integer> tähtedePunktid, String[] tähed, int hetkeSkoor) {
@@ -11,22 +11,13 @@ public class Punktisumma {
         this.tähed = tähed;
         this.hetkeSkoor = hetkeSkoor;
     }
-    public Hashtable<String, Integer> getTähtedePunktid() {
-        return tähtedePunktid;
-    }
-    public String[] getTähed() {
-        return tähed;
-    }
-    public void setTähed(String[] tähed) {
-        this.tähed = tähed;
-    }
     public int getHetkeSkoor() {
         return hetkeSkoor;
     }
     public void setHetkeSkoor(int hetkeSkoor) {
         this.hetkeSkoor = hetkeSkoor;
     }
-    public Hashtable<String, Integer> tähedPunktidKokku() {
+    public void tähedPunktidKokku() {
         for (String s : tähed) {
             String täht = s.substring(0,1);
             switch (täht) {
@@ -40,11 +31,16 @@ public class Punktisumma {
                 default -> System.out.println("Tundmatu täht!");
             }
         }
-        return tähtedePunktid;
     }
     public int arvutaSkoor(String hinnatavSõna) {
         List<String> tükeldatudSõna = Arrays.asList(hinnatavSõna.split(""));
         for (String s : tükeldatudSõna) hetkeSkoor += tähtedePunktid.get(s);
         return hetkeSkoor;
+    }
+    public int antudSõnaPunktid(String hinnatavSõna) {
+        int punktid = 0;
+        List<String> tükeldatudSõna = Arrays.asList(hinnatavSõna.split(""));
+        for (String s : tükeldatudSõna) punktid += tähtedePunktid.get(s);
+        return punktid;
     }
 }
