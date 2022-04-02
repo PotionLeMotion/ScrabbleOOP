@@ -1,4 +1,6 @@
+import java.util.Arrays;
 import java.util.Hashtable;
+import java.util.List;
 
 public class Punktisumma {
     private final Hashtable<String, Integer> tähtedePunktid;
