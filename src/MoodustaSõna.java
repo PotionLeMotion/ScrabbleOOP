@@ -96,12 +96,18 @@ public class MoodustaSõna {
         }
         if (väljumineMeetodist) {
             if (mängija == 1) {
-                System.out.println(punktisumma1.arvutaSkoor(hinnatavSõna));
+                System.out.println("Sinu praegune skoor on: ");
                 System.out.println(punktisumma1.getHetkeSkoor());
+                System.out.println("Sisestatud sõna annab nii palju punkte: ");
+                System.out.println(punktisumma1.antudSõnaPunktid(hinnatavSõna));
+                punktisumma1.arvutaSkoor(hinnatavSõna);
             }
             if (mängija == 2) {
-                System.out.println(punktisumma2.arvutaSkoor(hinnatavSõna));
+                System.out.println("Sinu praegune skoor on: ");
                 System.out.println(punktisumma2.getHetkeSkoor());
+                System.out.println("Sisestatud sõna annab nii palju punkte: ");
+                System.out.println(punktisumma2.antudSõnaPunktid(hinnatavSõna));
+                punktisumma2.arvutaSkoor(hinnatavSõna);
             }
             return true;
         }
