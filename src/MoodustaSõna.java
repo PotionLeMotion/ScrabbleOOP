@@ -12,7 +12,7 @@ public class MoodustaSõna {
         this.sisestatudSõna = sisestatudSõna;
     }
 
-    public boolean MoodustaTähtedestSõna(ArrayList<String> tähedKäes, String sisestatudSõna, int mängija) {
+    public boolean MoodustaTähtedestSõna(ArrayList<String> tähedKäes, String sisestatudSõna, int mängija, Punktisumma punktisumma1, Punktisumma punktisumma2) {
         boolean väljumineMeetodist;
         ArrayList<String> tähedKäesIlmaNumbriteta = new ArrayList<>();
         int kasTehaUuestiRing = 0;
@@ -96,12 +96,10 @@ public class MoodustaSõna {
         }
         if (väljumineMeetodist) {
             if (mängija == 1) {
-                Punktisumma punktisumma1 = new Punktisumma(new Hashtable<>(), tähestik.getTähestik(), 0);
                 System.out.println(punktisumma1.arvutaSkoor(hinnatavSõna));
                 System.out.println(punktisumma1.getHetkeSkoor());
             }
             if (mängija == 2) {
-                Punktisumma punktisumma2 = new Punktisumma(new Hashtable<>(), tähestik.getTähestik(), 0);
                 System.out.println(punktisumma2.arvutaSkoor(hinnatavSõna));
                 System.out.println(punktisumma2.getHetkeSkoor());
             }
