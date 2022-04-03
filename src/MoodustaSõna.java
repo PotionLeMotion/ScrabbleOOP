@@ -5,7 +5,6 @@ public class MoodustaSõna {
     private String salvestatudTähtedeIndeksid;
     private ArrayList<String> tähedKäes;
     private String sisestatudSõna;
-    Tähestik tähestik = new Tähestik(new String[]{"a"});
 
     public MoodustaSõna(ArrayList<String> tähedKäes, String sisestatudSõna, String salvestatudTähtedeIndeksid) {
         this.salvestatudTähtedeIndeksid = salvestatudTähtedeIndeksid;
@@ -30,53 +29,51 @@ public class MoodustaSõna {
         }
 
         for (int i = 0; ; i++) {
-            if (i < sisestusUuesti.length()) {
-                if (kasTehaUuestiRing >= 1) {
-                    if (kasTehaUuestiRing == 1) {
-                        i = 0;
-                        kasTehaUuestiRing++;
-                    }
-                    if (tähedKäesIlmaNumbriteta.contains(sisestusUuesti.substring(i, i + 1))) {
-                        String vastavTäht = sisestusUuesti.substring(i, i + 1);
-                        salvestatudTähed2 += vastavTäht;
-                        int täheleVastavIndeks = tähedKäesIlmaNumbriteta.indexOf(vastavTäht);
-                        salvestatudTähtedeIndeksid += täheleVastavIndeks;
-                        tähedKäesIlmaNumbriteta.set(täheleVastavIndeks, "-");
-                        System.out.println(tähedKäesIlmaNumbriteta);
-                        if (i == sisestusUuesti.length() - 1) {
-                            System.out.println("Sõna on võimalik moodustada!");
-                            väljumineMeetodist = true;
-                            hinnatavSõna = sisestusUuesti;
-                            break;
-                        }
-                    }
-                    else {
-                        i = -1;
-                        kasTehaUuestiRing = -1;
+            if (kasTehaUuestiRing >= 1) {
+                if (kasTehaUuestiRing == 1) {
+                    i = 0;
+                    kasTehaUuestiRing++;
+                }
+                if (tähedKäesIlmaNumbriteta.contains(sisestusUuesti.substring(i, i + 1))) {
+                    String vastavTäht = sisestusUuesti.substring(i, i + 1);
+                    salvestatudTähed2 += vastavTäht;
+                    int täheleVastavIndeks = tähedKäesIlmaNumbriteta.indexOf(vastavTäht);
+                    salvestatudTähtedeIndeksid += täheleVastavIndeks;
+                    tähedKäesIlmaNumbriteta.set(täheleVastavIndeks, "-");
+                    System.out.println(tähedKäesIlmaNumbriteta);
+                    if (i == sisestusUuesti.length() - 1) {
+                        System.out.println("Sõna on võimalik moodustada!");
+                        väljumineMeetodist = true;
+                        hinnatavSõna = sisestusUuesti;
+                        break;
                     }
                 }
-            }
-            if (i < sisestatudSõna.length()) {
-                if (kasTehaUuestiRing == 0) {
-                    if (tähedKäesIlmaNumbriteta.contains(sisestatudSõna.substring(i, i + 1))) {
-                        String vastavTäht = sisestatudSõna.substring(i, i + 1);
-                        salvestatudTähed2 += vastavTäht;
-                        int täheleVastavIndeks = tähedKäesIlmaNumbriteta.indexOf(vastavTäht);
-                        salvestatudTähtedeIndeksid += täheleVastavIndeks;
-                        tähedKäesIlmaNumbriteta.set(täheleVastavIndeks, "-");
-                        System.out.println(tähedKäesIlmaNumbriteta);
-                        if (i == sisestatudSõna.length() - 1) {
-                            System.out.println("Sõna on võimalik moodustada!");
-                            väljumineMeetodist = true;
-                            hinnatavSõna = sisestatudSõna;
-                            break;
-                        }
-                    }
-                    else
-                        i = 10;
+                else if (!tähedKäesIlmaNumbriteta.contains(sisestusUuesti.substring(i, i + 1))){
+                    i = -1;
+                    kasTehaUuestiRing = -1;
                 }
             }
-            else {
+            if (kasTehaUuestiRing == 0) {
+                if (tähedKäesIlmaNumbriteta.contains(sisestatudSõna.substring(i, i + 1))) {
+                    String vastavTäht = sisestatudSõna.substring(i, i + 1);
+                    salvestatudTähed2 += vastavTäht;
+                    int täheleVastavIndeks = tähedKäesIlmaNumbriteta.indexOf(vastavTäht);
+                    salvestatudTähtedeIndeksid += täheleVastavIndeks;
+                    tähedKäesIlmaNumbriteta.set(täheleVastavIndeks, "-");
+                    System.out.println(tähedKäesIlmaNumbriteta);
+                    if (i == sisestatudSõna.length() - 1) {
+                        System.out.println("Sõna on võimalik moodustada!");
+                        väljumineMeetodist = true;
+                        hinnatavSõna = sisestatudSõna;
+                        break;
+                    }
+                }
+                else if (!tähedKäesIlmaNumbriteta.contains(sisestatudSõna.substring(i, i + 1))) {
+                    kasTehaUuestiRing = -1;
+                    i = -1;
+                }
+            }
+            else if (kasTehaUuestiRing == -1) {
                 i = 0;
                 salvestatudTähtedeIndeksid = "";
                 System.out.println("Sinu käesolevatest tähtedest pole võimalik antud sõna moodustada.");

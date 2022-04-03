@@ -2,10 +2,6 @@ import java.util.*;
 
 public class AlustaMängu {
 
-    /**
-     * Moodustasõna, kui mittesobiv täht on eelviimane, siis läheb sõna ikka läbi
-     */
-
     public static void main(String[] args) {
 
         Tähestik tähestik = new Tähestik(new String[]{"a"});
@@ -17,28 +13,6 @@ public class AlustaMängu {
         Punktisumma punktisumma2 = new Punktisumma(new Hashtable<>(), tähestik.getTähestik(), 0);
         punktisumma1.tähedPunktidKokku();
         punktisumma2.tähedPunktidKokku();
-
-        List<String> käsi = Arrays.asList("A", "", "E", "I", "", "", "");
-        //Shuffle shuffle = new Shuffle(käsi, tähestik.getTähestik());
-/*
-        punktisumma1.tähedPunktidKokku();
-        punktisumma2.tähedPunktidKokku();
-        System.out.println(punktisumma1.arvutaSkoor("WOW"));
-        System.out.println(punktisumma1.getHetkeSkoor());
-        System.out.println();
-        System.out.println(punktisumma2.arvutaSkoor("NORMAL"));
-        System.out.println(punktisumma2.getHetkeSkoor());
-        System.out.println();
-        System.out.println(punktisumma1.getHetkeSkoor());
-        System.out.println(punktisumma2.getHetkeSkoor());
-        System.out.println();
-        System.out.println(punktisumma1.arvutaSkoor("HERO"));
-        System.out.println(punktisumma1.getHetkeSkoor());
-
-
- */
-        //String salvestaMängija1Nimi = "";
-        //String salvestaMängija2Nimi = "";
 
         System.out.println("Scrabble (meie moodi)");
         System.out.println();
@@ -76,7 +50,7 @@ public class AlustaMängu {
             System.out.println();
 
             if (moodustaSõna1.MoodustaTähtedestSõna(mängija1Käsi.getMängija1Tähed(), mängija1Sõna, 1, punktisumma1, punktisumma2) == true) {
-                System.out.println("Kas " + Mängija2 + " on antud sõnaga nõus? (Y/N): ");
+                System.out.print("Kas " + Mängija2 + " on antud sõnaga nõus? (Y/N): ");
                 Scanner jahVõiEi1 = new Scanner(System.in);
                 String vastus1 = jahVõiEi1.nextLine();
                 vastus1 = vastus1.toUpperCase();
@@ -102,7 +76,7 @@ public class AlustaMängu {
             System.out.println();
 
             if (moodustaSõna2.MoodustaTähtedestSõna(mängija2Käsi.getMängija2Tähed(), mängija2Sõna, 2, punktisumma1, punktisumma2) == true) {
-                System.out.println("Kas " + Mängija1 + " on antud sõnaga nõus? (Y/N): ");
+                System.out.print("Kas " + Mängija1 + " on antud sõnaga nõus? (Y/N): ");
                 Scanner jahVõiEi2 = new Scanner(System.in);
                 String vastus2 = jahVõiEi2.nextLine();
                 vastus2 = vastus2.toUpperCase();
@@ -115,6 +89,7 @@ public class AlustaMängu {
             }
 
         }
+        System.out.println();
         if (punktisumma1.getHetkeSkoor() > punktisumma2.getHetkeSkoor()) {
             System.out.println("Võitis " + Mängija1 + "!");
             System.out.println("Punktisummaks jäi " + punktisumma1.getHetkeSkoor());
@@ -123,7 +98,7 @@ public class AlustaMängu {
             System.out.println("Võitis " + Mängija2 + "!");
             System.out.println("Punktisummaks jäi " + punktisumma2.getHetkeSkoor());
         }
-        else {
+        else if (punktisumma1.getHetkeSkoor() == punktisumma2.getHetkeSkoor()){
             System.out.println("Viik!");
             System.out.println("Mõlema punktisummaks jäi " + punktisumma1.getHetkeSkoor() + "!");
         }
