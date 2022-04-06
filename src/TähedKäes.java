@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class TähedKäes {
-    private static int tähtedeArv = 7;
+    private static int tähtedeArv = 7; // sellega määrame, et käes saab olla 7 tähte
     private String[] tähedMängijale1;
     private String[] tähedMängijale2;
     private ArrayList<String> mängija1Tähed = new ArrayList<>(TähedKäes.getTähtedeArv());
@@ -16,6 +16,7 @@ public class TähedKäes {
         return tähtedeArv;
     }
 
+    // Sellega jagame mängu alguses 1. mängijale käesolevad tähed
     public void suvalisedTähedMängija1() {
         for (int i = 0; i < TähedKäes.getTähtedeArv(); i++) {
             int indeksTähestik = (int) (Math.random() * Tähestik.getTähestik().length);
@@ -23,6 +24,7 @@ public class TähedKäes {
             mängija1Tähed.add(vastavTäht);
         }
     }
+    // Sellega jagame mängu alguses 2. mängijale käesolevad tähed
     public void suvalisedTähedMängija2() {
         for (int i = 0; i < TähedKäes.getTähtedeArv(); i++) {
             int indeksTähestik = (int) (Math.random() * Tähestik.getTähestik().length);

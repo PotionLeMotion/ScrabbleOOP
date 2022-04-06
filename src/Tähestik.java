@@ -3,6 +3,7 @@ public class Tähestik {
     public Tähestik(String[] tähestik) {
         this.tähestik = tähestik;
     }
+    // Sellest võetakse mängijate kätte antavad tähed.
     public static String[] getTähestik() {
         return new String[]{"A-1", "E-1", "I-1", "O-1", "U-1",
                 "L-1", "N-1", "S-1", "T-1", "R-1",
