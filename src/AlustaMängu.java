@@ -58,7 +58,7 @@ public class AlustaMängu {
             System.out.println();
 
             // Asume sõna kokkupanekut tegema
-            if (moodustaSõna1.MoodustaTähtedestSõna(mängija1Käsi.getMängija1Tähed(), mängija1Sõna, 1, punktisumma1, punktisumma2) == true) {
+            if (moodustaSõna1.MoodustaTähtedestSõna(mängija1Käsi.getMängija1Tähed(), mängija1Sõna, 1, punktisumma1, punktisumma2)) {
                 System.out.print("Kas " + Mängija2 + " on antud sõnaga nõus? (Y/N): ");
                 Scanner jahVõiEi1 = new Scanner(System.in);
                 String vastus1 = jahVõiEi1.nextLine(); // selle true või false return põhjal vaatame.
@@ -86,7 +86,7 @@ public class AlustaMängu {
             System.out.println();
 
             // Asume sõna kokkupanekut tegema
-            if (moodustaSõna2.MoodustaTähtedestSõna(mängija2Käsi.getMängija2Tähed(), mängija2Sõna, 2, punktisumma1, punktisumma2) == true) {
+            if (moodustaSõna2.MoodustaTähtedestSõna(mängija2Käsi.getMängija2Tähed(), mängija2Sõna, 2, punktisumma1, punktisumma2)) {
                 System.out.print("Kas " + Mängija1 + " on antud sõnaga nõus? (Y/N): ");
                 Scanner jahVõiEi2 = new Scanner(System.in);
                 String vastus2 = jahVõiEi2.nextLine(); // selle true või false return põhjal vaatame, kas lisada punkte.
